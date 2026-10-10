@@ -297,6 +297,16 @@ Item {
   Process {
     id: initProc
     command: ["pkill", "-f", "wl-paste .*--watch .*/shell/plugins/clipboard/capture\\.sh"]
+    onExited: privacyProc.running = true
+  }
+
+  // Clipboard history can hold private text, so keep it readable by its
+  // owner only: the history file 0600 and the image folder 0700, set before
+  // anything is captured. Atomic saves carry the file's mode over to each
+  // new copy, so setting it once per start is enough.
+  Process {
+    id: privacyProc
+    command: ["sh", "-c", "umask 077; images=\"${XDG_STATE_HOME:-$HOME/.local/state}/omarchy/clipboard-images\"; mkdir -p \"$(dirname \"$1\")\" \"$images\"; chmod 700 \"$images\"; [ -e \"$1\" ] || : > \"$1\"; chmod 600 \"$1\"", "sh", root.historyPath]
     onExited: {
       currentProc.running = true
       textWatchProc.running = true

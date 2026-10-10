@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "ggregoro.clipboard-cards",
   "name": "Clipboard Cards",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Greg Gregorowicz",
   "license": "GPL-3.0-only",
   "description": "Omarchy's clipboard manager with a card layout: history list and a separate preview panel",

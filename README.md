@@ -24,6 +24,13 @@ Colours, border, font and corner radius come from your theme.
 - Long text in the preview scrolls with the mouse wheel or
   `Shift + Up` / `Shift + Down`.
 
+## Privacy
+
+The history is plain text in `~/.local/state/omarchy/clipboard-history.json`,
+with copied images in `clipboard-images` beside it. Since 1.0.1 the plugin
+makes both readable by your user only (file `0600`, folder `0700`) each time
+the shell starts, including a history left behind by the built-in plugin.
+
 ## Requirements
 
 - Omarchy with its shell running. Built and tested on Omarchy 4.0.4.
